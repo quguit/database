@@ -1,31 +1,62 @@
-**Entidades Principais:**
+# Levantamento de Requisitos
 
-1. **Salas:** Para cada sala da universidade, você deve armazenar informações como número da sala, capacidade máxima de ocupação, tipo de sala (aula, laboratório, sala de reunião, etc.), recursos disponíveis (projetor, quadro branco, computador, etc.), status de limpeza (limpa ou suja), status de ventilação (funcionando ou não) e disponibilidade de data show.
+## Sistema de Reserva de Salas/Laboratórios (UFRB)
 
-2. **Reservas:** Cada reserva deve estar associada a uma sala específica. Registre a data e hora de início e término da reserva, o responsável pela reserva (estudante, professor ou funcionário), o motivo da reserva (aula, reunião, evento, etc.) e quaisquer recursos adicionais necessários.
+### Objetivos Gerais
 
-3. **Usuários:** Registre informações sobre os usuários do sistema, como nome, e-mail, e tipo de usuário (estudante, professor, funcionário).
+O objetivo deste sistema é permitir a reserva, autorização e controle do acesso às salas e laboratórios da UFRB no campus de Cruz das Almas. O projeto visa criar a interface gráfica, a API e o banco de dados do sistema.
 
-4. **Funcionários de Limpeza:** Registre informações sobre os funcionários de limpeza, como nome, identificação, telefone de contato e credenciais de login. Eles terão permissão especial para gerenciar o status de limpeza das salas e interditá-las, se necessário.
+### Atores do Sistema
 
-**Relacionamentos e Funcionalidades:**
+- Alunos
+  - Realiza cadastro/login no sistema
+  - Reserva uma sala/laboratório no sistema
 
-a) Os professores e alunos devem ter permissão para reservar salas de aula e laboratórios, mas também podem indicar se a sala precisa de limpeza antes ou depois da reserva.
+- Professores
+  - Realiza cadastro/login no sistema
+  - Reserva uma sala/laboratório no sistema
+  - Permite acesso dos alunos às salas/laboratórios da UFRB
 
-b) Salas podem ser reservadas para um período específico, como uma data e horário de início e término.
+- Funcionários Terceirizados
+  - Realiza cadastro/login no sistema
+  - Realiza a limpeza/administração das salas/laboratórios
+  - Verifica as necessidades específicas das salas/laboratórios
+  - Faz observações em relação às salas/laboratórios
+  - Checa as reservas das salas/laboratórios
+  - Registra os acessos das salas/laboratórios
 
-c) Os funcionários de limpeza podem acessar informações sobre quais salas precisam de limpeza e interditar uma sala se estiver suja ou não estiver funcionando adequadamente.
+- Técnicos Administrativos
+  - Checa as reservas das salas/laboratórios
+  - Registra os acessos das salas/laboratórios
+  - Verifica as necessidades específicas das salas/laboratórios
+  - Faz observações em relação às salas/laboratórios
 
-d) Os administradores do sistema podem alocar turmas no início do semestre e verificar a disponibilidade das salas, levando em consideração o status de limpeza e ventilação.
+### Requisitos Funcionais (Casos de Uso)
 
-e) Mantenha um histórico de todas as reservas anteriores para cada sala, incluindo as informações sobre o status de limpeza e ventilação após cada reserva.
+- [RF001] O sistema deve permitir o cadastro de alunos, coletando os dados de e-mail, nome, matrícula, contato, e seu número identificador será sua matrícula.
 
-f) Implemente um sistema de autenticação seguro para os usuários e funcionários de limpeza.
+- [RF002] O sistema deve permitir o cadastro de professores, coletando os dados de e-mail, nome, contato, siap (ou matrícula de acesso do SIGAA), e seu número identificador será seu siap.
 
-g) Os funcionários de limpeza podem atualizar o status de limpeza das salas, indicando se estão limpas ou sujas.
+- [RF003] O sistema deve permitir o cadastro de técnicos administrativos, coletando os dados de e-mail, nome, contato, e seu número identificador será o ID de registro.
 
-h) Os funcionários de limpeza podem interditar uma sala se ela estiver suja ou se a ventilação não estiver funcionando, impedindo que outras reservas sejam feitas até que o problema seja resolvido.
+- [RF004] O sistema deve permitir o cadastro de funcionários terceirizados, coletando os dados de e-mail, nome, contato, e seu número identificador será o ID de registro.
 
-i) Registre o motivo das reservas e o motivo da interdição das salas para fins de acompanhamento e relatórios.
+- [RF005] O sistema deve permitir o login de todos os atores cadastrados que possuírem cadastro prévio e ativação do cadastro. O login deve ser feito por meio do identificador e da senha cadastrada no sistema.
 
-Esta estrutura expandida permitirá que o sistema de reserva de salas da universidade gerencie não apenas as reservas de salas, mas também o status de limpeza, ventilação e interdição das salas, garantindo um ambiente seguro e limpo para os usuários. Certifique-se de projetar uma interface de usuário intuitiva para facilitar o uso do sistema por todos os envolvidos.
+- [RF006] O sistema deve permitir a recuperação da senha, sendo necessário o registro do e-mail utilizado no momento do cadastro.
+
+- [RF007] O sistema deve permitir o cadastro de salas/laboratórios, coletando informações como número da sala, capacidade máxima de ocupação, tipo de sala (aula, laboratório, etc.), recursos disponíveis (projetor, climatização, tomadas, iluminação), status de limpeza (Limpo, Limpando ou Sujo), e observações (informações extras sobre funcionamento ou condições dos recursos).
+
+- [RF008] O sistema deve permitir a atualização das informações cadastradas das salas/laboratórios. Os professores, funcionários terceirizados e técnicos administrativos podem solicitar alterações de informações sobre as salas/laboratórios. As alterações devem ser autorizadas por funcionários específicos.
+
+- [RF009] O sistema deve registrar as informações das reservas, incluindo data, horário de início e duração, quem reservou, o horário da reserva, e registrar a devolução das chaves.
+
+- [RF010] O sistema deve registrar as informações sobre quais salas/laboratórios os alunos podem acessar. Isso deve permitir que técnicos administrativos e terceirizados visualizem quais salas/laboratórios os alunos possuem permissão de acesso. Cada reserva deve estar associada a uma sala específica, registrando a data e hora de início e término da reserva, o responsável pela reserva (estudante, professor ou funcionário), o motivo da reserva (aula, reunião, evento, etc.) e quaisquer recursos adicionais necessários.
+
+- [RF011] O sistema deve permitir que os alunos solicitem acesso a determinada sala/laboratório. Todos os alunos podem solicitar o acesso a qualquer sala e laboratório, fornecendo a data, horário e sala desejados, e o professor responsável por permitir o acesso. Após o pedido ser feito, cabe ao professor autorizar ou não o acesso do aluno. Após o aluno ter seu acesso liberado, ele receberá um e-mail de confirmação.
+
+- [RF012] O sistema deve permitir que funcionários terceirizados e técnicos administrativos visualizem as reservas feitas.
+
+### Sugestões de Atualização
+
+- "Token na chave, chaveiro com QRCode, que ao usuário escanear já preenche automaticamente as informações da sala servido para reserva e devolução, e se for uma turma recorrente, registrada por técnicos administrativos basta escanear e será registrado o uso da sala para o período já registrado."
