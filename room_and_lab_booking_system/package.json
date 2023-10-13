@@ -1,0 +1,19 @@
+{
+  "name": "room_and_lab_booking_system",
+  "version": "1.0.0",
+  "description": "## Objetivos Gerais O objetivo deste sistema é permitir a reserva, autorização e controle do acesso às salas e laboratórios da UFRB no campus de Cruz das Almas. O projeto visa criar a interface gráfica, a API e o banco de dados do sistema.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guilherme",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.6",
+    "pg": "^8.11.3",
+    "sequelize": "^6.33.0",
+    "sequelize-cli": "^6.6.1",
+    "sqlite3": "^5.1.6"
+  }
+}
