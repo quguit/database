@@ -1,0 +1,4 @@
+HTML utiliza tags, marcações para dizer onde os elementos devem estar, HTML é uma linguam de marcação para colocar os elementos.
+CSS permite novas propriedades, fazendo estilização completa do nosso site(estilizado), diretamente relacionando com HTML. 
+Design Responsivo, faz com que nosso site se comportem em qualquer dispositivo,  precisamos enter como funciona, as resoluções
+ 

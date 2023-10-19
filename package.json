@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/quguit/database/issues"
   },
-  "homepage": "https://github.com/quguit/database#readme"
+  "homepage": "https://github.com/quguit/database#readme",
+  "dependencies": {
+    "express-handlebars": "^7.1.2",
+    "handlebars": "^4.7.8"
+  }
 }
